@@ -135,6 +135,11 @@ class FocusScreen extends ConsumerWidget {
 
                     return TaskTile(
                       task: task,
+                      onToggle: () {
+                        ref
+                            .read(tasksProvider.notifier)
+                            .toggleTask(task.id);
+                      },
                     );
                   },
                 ),
