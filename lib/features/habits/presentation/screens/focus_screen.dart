@@ -60,7 +60,7 @@ class FocusScreen extends ConsumerWidget {
             children: [
               // Header
               const Text(
-                'Good Evening, Ashutosh',
+                'Welcome Back',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class FocusScreen extends ConsumerWidget {
               const SizedBox(height: 4),
 
               const Text(
-                'Stay consistent today 🔥',
+                'Your arena is waiting.',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,

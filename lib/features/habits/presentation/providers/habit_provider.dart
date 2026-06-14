@@ -1,10 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import '../../data/habit_repository.dart';
 import '../../domain/habit.dart';
 
 class HabitNotifier extends Notifier<List<Habit>> {
+
+  final HabitRepository _repository = HabitRepository();
+
   @override
   List<Habit> build() {
+    final savedHabits = _repository.loadHabits();
+    if (savedHabits.isNotEmpty) {
+      return savedHabits;
+    }
     return [
       const Habit(
         id: '1',
@@ -31,15 +38,16 @@ class HabitNotifier extends Notifier<List<Habit>> {
   }
 
   void toggleHabit(String habitId) {
-    state = state.map((habit) {
+    final updatedHabits = state.map((habit) {
       if (habit.id == habitId) {
         return habit.copyWith(
           completedToday: !habit.completedToday,
         );
       }
-
       return habit;
     }).toList();
+    state = updatedHabits;
+    _repository.saveHabits(updatedHabits);
   }
 }
 

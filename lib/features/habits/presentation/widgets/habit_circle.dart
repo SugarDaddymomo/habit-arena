@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/habit.dart';
+import '../../../../app/theme/app_colors.dart';
 
 class HabitCircle extends StatelessWidget {
   final Habit habit;
@@ -19,16 +20,25 @@ class HabitCircle extends StatelessWidget {
         onTap: onTap,
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundColor:
-              habit.completedToday
-                  ? Colors.green.shade200
-                  : Colors.grey.shade300,
-              child: Text(
-                habit.emoji,
-                style: const TextStyle(
-                  fontSize: 24,
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: habit.completedToday
+                    ? AppColors.success
+                    : AppColors.surface,
+                border: Border.all(
+                  color: habit.completedToday
+                      ? AppColors.success
+                      : AppColors.border,
+                  width: 2,
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  habit.emoji,
+                  style: const TextStyle(fontSize: 28),
                 ),
               ),
             ),

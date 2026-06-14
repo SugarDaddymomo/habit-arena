@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../../../app/theme/app_colors.dart';
 import '../../domain/task.dart';
 
 class TaskTile extends StatelessWidget {
@@ -15,6 +15,10 @@ class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: AppColors.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
       margin: const EdgeInsets.only(bottom: 8),
       child: CheckboxListTile(
         title: Text(task.title),

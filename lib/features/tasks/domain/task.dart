@@ -20,4 +20,20 @@ class Task {
       completed: completed ?? this.completed,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'completed': completed,
+    };
+  }
+
+  factory Task.fromMap(Map map) {
+    return Task(
+      id: map['id'],
+      title: map['title'],
+      completed: map['completed'],
+    );
+  }
 }

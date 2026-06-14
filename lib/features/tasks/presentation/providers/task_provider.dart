@@ -1,10 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import '../../data/task_repository.dart';
 import '../../domain/task.dart';
 
 class TaskNotifier extends Notifier<List<Task>> {
+
+  final TaskRepository _repository = TaskRepository();
+
   @override
   List<Task> build() {
+    final savedTasks = _repository.loadTasks();
+    if (savedTasks.isNotEmpty) {
+      return savedTasks;
+    }
     return [
       const Task(
         id: '1',
@@ -25,15 +32,16 @@ class TaskNotifier extends Notifier<List<Task>> {
   }
 
   void toggleTask(String taskId) {
-    state = state.map((task) {
+    final updatedTasks = state.map((task) {
       if (task.id == taskId) {
         return task.copyWith(
           completed: !task.completed,
         );
       }
-
       return task;
     }).toList();
+    state = updatedTasks;
+    _repository.saveTasks(updatedTasks);
   }
 }
 

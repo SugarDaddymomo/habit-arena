@@ -28,4 +28,24 @@ class Habit {
       streak: streak ?? this.streak,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'emoji': emoji,
+      'completedToday': completedToday,
+      'streak': streak,
+    };
+  }
+
+  factory Habit.fromMap(Map map) {
+    return Habit(
+      id: map['id'],
+      title: map['title'],
+      emoji: map['emoji'],
+      completedToday: map['completedToday'],
+      streak: map['streak'],
+    );
+  }
 }

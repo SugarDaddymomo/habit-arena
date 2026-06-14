@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'theme/app_theme.dart';
 import '../features/habits/presentation/screens/focus_screen.dart';
 
 class HabitArenaApp extends StatelessWidget {
@@ -10,9 +10,7 @@ class HabitArenaApp extends StatelessWidget {
     return MaterialApp(
       title: 'HabitArena',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: AppTheme.darkTheme,
       home: const FocusScreen(),
     );
   }
