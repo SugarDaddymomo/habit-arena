@@ -3,14 +3,14 @@ class Habit {
   final String title;
   final String emoji;
   final bool completedToday;
-  final int streak;
+  final List<String> completionHistory;
 
   const Habit({
     required this.id,
     required this.title,
     required this.emoji,
     required this.completedToday,
-    required this.streak,
+    required this.completionHistory,
   });
 
   Habit copyWith({
@@ -18,14 +18,14 @@ class Habit {
     String? title,
     String? emoji,
     bool? completedToday,
-    int? streak,
+    List<String>? completionHistory,
   }) {
     return Habit(
       id: id ?? this.id,
       title: title ?? this.title,
       emoji: emoji ?? this.emoji,
       completedToday: completedToday ?? this.completedToday,
-      streak: streak ?? this.streak,
+      completionHistory: completionHistory ?? this.completionHistory
     );
   }
 
@@ -35,7 +35,7 @@ class Habit {
       'title': title,
       'emoji': emoji,
       'completedToday': completedToday,
-      'streak': streak,
+      'completionHistory': completionHistory,
     };
   }
 
@@ -45,7 +45,7 @@ class Habit {
       title: map['title'],
       emoji: map['emoji'],
       completedToday: map['completedToday'],
-      streak: map['streak'],
+      completionHistory: List<String>.from(map['completionHistory'] ?? []),
     );
   }
 }

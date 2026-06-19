@@ -17,16 +17,19 @@ class TaskNotifier extends Notifier<List<Task>> {
         id: '1',
         title: 'Finish Flutter Setup',
         completed: true,
+        timePeriod: 'Morning',
       ),
       const Task(
         id: '2',
         title: 'Create Habit Screen',
         completed: false,
+        timePeriod: 'Afternoon',
       ),
       const Task(
         id: '3',
         title: 'Push To GitHub',
         completed: false,
+        timePeriod: 'Evening',
       ),
     ];
   }
@@ -40,6 +43,29 @@ class TaskNotifier extends Notifier<List<Task>> {
       }
       return task;
     }).toList();
+    state = updatedTasks;
+    _repository.saveTasks(updatedTasks);
+  }
+
+  Future<void> addTask({
+    required String title,
+    required String timePeriod,
+  }) async {
+    final task = Task(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: title,
+      completed: false,
+      timePeriod: timePeriod,
+    );
+    state = [...state, task];
+    await _repository.saveTasks(state);
+  }
+
+  void deleteTask(String taskId) {
+    final updatedTasks = state
+        .where((task) => task.id != taskId)
+        .toList();
+
     state = updatedTasks;
     _repository.saveTasks(updatedTasks);
   }

@@ -22,5 +22,13 @@ class AppTheme {
       backgroundColor: Colors.transparent,
       elevation: 0,
     ),
+
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.surface,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: Colors.grey,
+      type: BottomNavigationBarType.fixed,
+      elevation: 0,
+    ),
   );
 }

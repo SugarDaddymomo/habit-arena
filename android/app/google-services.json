@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840350427511",
+    "project_id": "habitarena-44863",
+    "storage_bucket": "habitarena-44863.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840350427511:android:320a6aa09eb7bf427f9972",
+        "android_client_info": {
+          "package_name": "com.habitarena.habit_arena"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXYG2sM17_-Y_k2awpvr-obu4Yp_RJKC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

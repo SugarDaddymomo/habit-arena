@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../domain/habit.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/utils/habit_analytics.dart';
 
 class HabitCircle extends StatelessWidget {
   final Habit habit;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
 
   const HabitCircle({
     super.key,
     required this.habit,
     required this.onTap,
+    this.onLongPress,
   });
 
   @override
@@ -18,6 +21,7 @@ class HabitCircle extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16),
       child: GestureDetector(
         onTap: onTap,
+        onLongPress: onLongPress,
         child: Column(
           children: [
             Container(
@@ -53,7 +57,7 @@ class HabitCircle extends StatelessWidget {
             ),
 
             Text(
-              '${habit.streak}🔥',
+              '${HabitAnalytics.currentStreak(habit)}🔥',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
